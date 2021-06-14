@@ -1,12 +1,12 @@
 package com.frank.snakegame.framework;
 
 public interface Graphics {
-    public static enum PixmapForamt
+    public static enum PixmapFormat
     {
         ARGB8888,ARGB4444,RGB565
     }
 
-    public PixMap newPixmap(String fileName,PixmapForamt pixmapForamt);
+    public Pixmap newPixmap(String fileName, PixmapFormat pixmapForamt);
 
     public void clear(int color);
 
@@ -16,9 +16,9 @@ public interface Graphics {
 
     public void drawRect(int x,int y,int width,int height,int color);
 
-    public void drawPixmap(PixMap pixMap,int x,int y,int srcX,int srcY,int srcWidth,int srcHeight);
+    public void drawPixmap(Pixmap pixMap, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight);
 
-    public void drawPixmap(PixMap pixMap,int x,int y);
+    public void drawPixmap(Pixmap pixMap, int x, int y);
 
     public int getWidth();
 

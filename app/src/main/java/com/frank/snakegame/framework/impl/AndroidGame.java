@@ -16,8 +16,9 @@ import com.frank.snakegame.framework.Game;
 import com.frank.snakegame.framework.Graphics;
 import com.frank.snakegame.framework.Input;
 import com.frank.snakegame.framework.Screen;
+import com.socks.library.KLog;
 
-public class AndroidGame extends AppCompatActivity implements Game {
+public abstract class AndroidGame extends AppCompatActivity implements Game {
 
     private AndroidFastRenderView renderView;
     private Graphics graphics;
@@ -30,8 +31,11 @@ public class AndroidGame extends AppCompatActivity implements Game {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        KLog.i();
+        getSupportActionBar().hide();
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         int frameBufferWidth = isLandscape?480:320;
         int frameBufferHeight = isLandscape?320:480;
@@ -48,15 +52,15 @@ public class AndroidGame extends AppCompatActivity implements Game {
         screen = getStartScreen();
         setContentView(renderView);
 
-        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = powerManager.newWakeLock(powerManager.FULL_WAKE_LOCK,"GLGame");
+//        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+//        wakeLock = powerManager.newWakeLock(powerManager.FULL_WAKE_LOCK,"GLGame");
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        wakeLock.acquire();
+//        wakeLock.acquire();
         screen.resume();
         renderView.resume();
     }
@@ -64,7 +68,7 @@ public class AndroidGame extends AppCompatActivity implements Game {
     @Override
     protected void onPause() {
         super.onPause();
-        wakeLock.release();
+//        wakeLock.release();
         renderView.pause();
         screen.pause();
         if (isFinishing())
@@ -96,6 +100,7 @@ public class AndroidGame extends AppCompatActivity implements Game {
     @Override
     public void setScreen(Screen screen) {
 
+        KLog.i();
         if (screen == null)
         {
             throw new IllegalArgumentException("screen must not be null");
@@ -114,8 +119,8 @@ public class AndroidGame extends AppCompatActivity implements Game {
         return screen;
     }
 
-    @Override
-    public Screen getStartScreen() {
-        return null;
-    }
+//    @Override
+//    public Screen getStartScreen() {
+//        return null;
+//    }
 }

@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".framework.impl.AndroidGame"></activity>
-        <activity android:name=".ui.MainActivity">
+<!--        <activity android:name=".framework.impl.AndroidGame"></activity>-->
+        <activity android:name=".mrnom.MrNomGame">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

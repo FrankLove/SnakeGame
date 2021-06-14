@@ -7,6 +7,6 @@ public class MrNomGame extends AndroidGame {
 
     @Override
     public Screen getStartScreen() {
-        return super.getStartScreen();
+        return new LoadingScreen(this);
     }
 }

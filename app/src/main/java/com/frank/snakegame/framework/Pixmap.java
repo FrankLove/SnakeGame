@@ -1,11 +1,11 @@
 package com.frank.snakegame.framework;
 
-public interface PixMap {
+public interface Pixmap {
     public int getWidth();
 
     public int getHeight();
 
-    public Graphics.PixmapForamt getFormat();
+    public Graphics.PixmapFormat getFormat();
 
     public void dispose();
 }

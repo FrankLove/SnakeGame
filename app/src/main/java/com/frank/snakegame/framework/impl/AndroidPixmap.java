@@ -3,14 +3,14 @@ package com.frank.snakegame.framework.impl;
 import android.graphics.Bitmap;
 
 import com.frank.snakegame.framework.Graphics;
-import com.frank.snakegame.framework.PixMap;
+import com.frank.snakegame.framework.Pixmap;
 
-public class AndroidPixmap implements PixMap {
+public class AndroidPixmap implements Pixmap {
 
     protected Bitmap bitmap;
-    protected Graphics.PixmapForamt foramt;
+    protected Graphics.PixmapFormat foramt;
 
-    public AndroidPixmap(Bitmap bitmap, Graphics.PixmapForamt pixmapForamt)
+    public AndroidPixmap(Bitmap bitmap, Graphics.PixmapFormat pixmapForamt)
     {
         this.bitmap = bitmap;
         this.foramt = pixmapForamt;
@@ -27,7 +27,7 @@ public class AndroidPixmap implements PixMap {
     }
 
     @Override
-    public Graphics.PixmapForamt getFormat() {
+    public Graphics.PixmapFormat getFormat() {
         return foramt;
     }
 
